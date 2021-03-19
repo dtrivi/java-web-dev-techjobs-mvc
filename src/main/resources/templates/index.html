@@ -9,7 +9,7 @@
         <div class="container body-content">
             <h2>View jobs by:</h2>
             <ul>
-                <li th:each="action : ${actions}">
+                <li th:each="action : ${actions}"> <!-- Reference to actionChoices found in HomeController -->
                     <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>
                 </li>
             </ul>

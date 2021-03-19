@@ -12,7 +12,7 @@
         </div>
 
         <table class="centeredTable">
-            <tr>
+            <tr> <!-- Data from columnChoices (aka job fields, found in ListController) is used to fill in the header row -->
                 <th:block th:each="column : ${columns}">
                     <th th:text = "${column.value}"></th>
                 </th:block>
@@ -20,11 +20,18 @@
             <tr>
                 <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
-                <td></td> <!-- Feel free to remove or modify this element if necessary. -->
-
-                <td th:each="category : ${tableChoices}">
+                <td>
                     <ul>
-                        <li th:each="item : ${category.value}">
+                        <li>
+                            <a th:href="@{/list/jobs(column=${all},value=${all})}">View All</a>
+                        </li>
+                    </ul>
+                </td> <!-- Feel free to remove or modify this element if necessary. -->
+
+                <!-- information stored in tableChoices generates the link text -->
+                <td th:each="category : ${tableChoices}"> <!-- category represents one key/value pair from tableChoices (found in ListController)-->
+                    <ul>
+                        <li th:each="item : ${category.value}"> <!-- item represents one entry from the stored ArrayList (of values)-->
                             <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
                         </li>
                     </ul>
