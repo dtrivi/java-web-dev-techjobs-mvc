@@ -9,7 +9,6 @@
 <div class="container body-content">
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-
     <form th:action="@{/search/results}" method = "post">
         <h2>Search by:</h2>
 
@@ -37,6 +36,19 @@
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
+    <table class="table.job-listing">
+
+        <tr th:each="item : ${jobs}">
+            <td>
+                <p style="font-weight:bold" th:text = "'ID: ' + ${item.id}"></p>
+                <p style="font-weight:bold" th:text = "'Name: ' + ${item.name}"></p>
+                <p style="font-weight:bold" th:text = "'Employer: ' + ${item.employer}"></p>
+                <p style="font-weight:bold" th:text = "'Location: ' + ${item.location}"></p>
+                <p style="font-weight:bold" th:text = "'Position Type: ' + ${item.positionType}"></p>
+                <p style="font-weight:bold" th:text = "'Skill: ' + ${item.coreCompetency}"></p>
+            </td>
+        </tr>
+    </table>
 
 </div>
 
